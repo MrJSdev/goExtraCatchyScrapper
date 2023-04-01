@@ -22,7 +22,7 @@ func InitScrapping(link string) {
 		project.Id = idCounter
 		project.Name = h.ChildText("h3")
 		project.Link = h.ChildAttr("a", "href")
-		project.Image = h.ChildAttr("img", "src")
+		project.Image = h.ChildAttr("img", "data-srcset")
 
 		projects = append(projects, project)
 
