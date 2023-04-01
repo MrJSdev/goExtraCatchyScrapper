@@ -14,15 +14,19 @@ func InitScrapping(link string) {
 
 	var projects []entity.Project
 
+	var idCounter int = 1
+
 	c.OnHTML("div.portfolio-item", func(h *colly.HTMLElement) {
 		var project entity.Project
 
+		project.Id = idCounter
 		project.Name = h.ChildText("h3")
 		project.Link = h.ChildAttr("a", "href")
 		project.Image = h.ChildAttr("img", "src")
 
 		projects = append(projects, project)
 
+		idCounter++
 	})
 
 	// Save file when scraping is finished
